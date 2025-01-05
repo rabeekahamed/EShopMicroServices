@@ -3,4 +3,4 @@ global using Mapster;
 global using MediatR; //MediatR will handle business Logic
 global using BuildingBlocks.CQRS;
 global using Catalog.API.Models;
-global using Marten;
+global using Marten; //Used for Postgres DB ORM connectivity

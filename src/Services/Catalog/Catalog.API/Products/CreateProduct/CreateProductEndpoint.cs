@@ -10,7 +10,8 @@ namespace Catalog.API.Products.CreateProduct
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("/products", async (CreateProductResult request, ISender sender) =>
+            app.MapPost("/products", 
+                async (CreateProductResult request, ISender sender) =>
             {
                 var command = request.Adapt<CreateProductCommand>(); //Mapster - Map the incoming command object
 
@@ -19,7 +20,8 @@ namespace Catalog.API.Products.CreateProduct
                 var response = result.Adapt<CreateProductResponse>();
 
                 return Results.Created($"/products/{response.Id}", response);
-            }).WithName("Create Product")
+
+            }).WithName("CreateProduct")
                 .Produces<CreateProductResponse>(StatusCodes.Status201Created)
                 .ProducesProblem(StatusCodes.Status400BadRequest)
                 .WithSummary("Create Product")

@@ -10,7 +10,7 @@ builder.Services.AddMediatR(config =>
 builder.Services.AddMarten(opts =>
 {
     opts.Connection(builder.Configuration.GetConnectionString("Database")!);
-    //opts.AutoCreateSchemaObjects(); //To create object 
+   
 }).UseLightweightSessions();
 
 var app = builder.Build();
