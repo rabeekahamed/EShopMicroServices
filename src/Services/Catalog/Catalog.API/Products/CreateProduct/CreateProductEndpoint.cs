@@ -19,7 +19,7 @@ namespace Catalog.API.Products.CreateProduct
                 var response = result.Adapt<CreateProductResponse>();
 
                 return Results.Created($"/products/{response.Id}", response);
-            }).WithName("")
+            }).WithName("Create Product")
                 .Produces<CreateProductResponse>(StatusCodes.Status201Created)
                 .ProducesProblem(StatusCodes.Status400BadRequest)
                 .WithSummary("Create Product")

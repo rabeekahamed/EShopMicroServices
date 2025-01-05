@@ -7,6 +7,12 @@ builder.Services.AddMediatR(config =>
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
 }); //MediatR will handle business Logic
 
+builder.Services.AddMarten(opts =>
+{
+    opts.Connection(builder.Configuration.GetConnectionString("Database")!);
+    //opts.AutoCreateSchemaObjects(); //To create object 
+}).UseLightweightSessions();
+
 var app = builder.Build();
 
 
